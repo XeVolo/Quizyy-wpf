@@ -40,9 +40,9 @@ namespace Quizyy_wpf.View
         public void OpenMode()
         {
             mainWindow1.backButton.Visibility = Visibility.Visible;
-            CreateUI();
+            NewSet();
         }
-        private void CreateUI()
+        private void NewSet()
         {
             stackPanel = new StackPanel
             {

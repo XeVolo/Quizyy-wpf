@@ -28,9 +28,7 @@ namespace Quizyy_wpf.View
         private Button? nextButton;
         private Button? contextButton;
         private TextBlock? DisplayTextBlock;
-        List<FlashCardsModel> items = BaseController.GetFlashCardsList();
-        private int currentIndex = 1;
-        private int control = 0;
+        private FlashCardsController controller= new FlashCardsController();
         public FlashCardsView(MainWindow mainView)
         {
             mainWindow = mainView;
@@ -41,9 +39,9 @@ namespace Quizyy_wpf.View
         public void OpenMode()
         {
             mainWindow.backButton.Visibility = Visibility.Visible;     
-            CreateUI();
+            NewSet();
         }
-        private void CreateUI()
+        private void NewSet()
         {
             stackPanel = new StackPanel
             {
@@ -101,56 +99,25 @@ namespace Quizyy_wpf.View
 
             mainWindow.MainGrid.Children.Add(stackPanel);
             mainWindow.MainGrid.Children.Add(DisplayTextBlock);
-            DisplayCurrentItem();
-        }
+			DisplayTextBlock.Text = controller.DisplayCurrentItem();
+		}
 
         private void PreviousButtonClick(object sender, RoutedEventArgs e)
         {
-            if (currentIndex > 0)
-            {
-                currentIndex--;
-                DisplayCurrentItem();
-            }
-            else if (currentIndex == 0)
-            {
-                currentIndex = items.Count - 1;
-                DisplayCurrentItem();
-            }
+            controller.PreviousButtonClick();
+			DisplayTextBlock.Text = controller.DisplayCurrentItem();
         }
 
         private void NextButtonClick(object sender, RoutedEventArgs e)
         {
-            if (currentIndex < items.Count - 1)
-            {
-                currentIndex++;
-                DisplayCurrentItem();
-            }else if (currentIndex == items.Count - 1)
-            {
-                currentIndex=0;
-            }
-        }
+			controller.NextButtonClick();
+			DisplayTextBlock.Text = controller.DisplayCurrentItem();
+		}
         private void ContextButtonClick(object sender, RoutedEventArgs e)
         {
-            if (control == 1)
-            {
-                DisplayTextBlock.Text = items[currentIndex].definition;
-                control = 0;
-            }
-            else
-            {
-                DisplayTextBlock.Text = items[currentIndex].concept;
-                control = 1;
-            }
-        }
+			DisplayTextBlock.Text = controller.ContextButtonClick();
+		}
 
-        private void DisplayCurrentItem()
-        {
-            if (items.Count > 0 && currentIndex >= 0 && currentIndex < items.Count)
-            {
-                DisplayTextBlock.Text = items[currentIndex].concept;
-                control = 1;
-            }
-        }
         
     }
 }

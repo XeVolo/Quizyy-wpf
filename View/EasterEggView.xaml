@@ -8,6 +8,20 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid x:Name="MainGrid" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <Image Source="egg.PNG" Width="100" Margin="150,0,0,150" Visibility="Visible"/>
+        <Image Source="egg.PNG" Width="100" Margin="0,0,150,150" Visibility="Visible"/>
+        <Image Source="egg.PNG" Width="100" Margin="300,0,0,150" Visibility="Visible"/>
+        <Image Source="egg.PNG" Width="100" Margin="0,0,300,150" Visibility="Visible"/>
+        <Image Source="egg.PNG" Width="100" Margin="450,0,0,150" Visibility="Visible"/>
+        <Image Source="egg.PNG" Width="100" Margin="0,0,450,150" Visibility="Visible"/>
+        <Image Source="egg.PNG" Width="100" Margin="600,0,0,150" Visibility="Visible"/>
+        <Image Source="egg.PNG" Width="100" Margin="0,0,600,150" Visibility="Visible"/>
+        <Image Source="egg.PNG" Width="100" Margin="0,0,0,150" Visibility="Visible"/>
+
+        <TextBlock x:Name="eggText" TextWrapping="Wrap" Style="{StaticResource CustomTextStyle}" Margin="150,250,150,0" Text=""/>
+            
         <ContentControl x:Name="contentControl"/>
+        
     </Grid>
 </UserControl>
