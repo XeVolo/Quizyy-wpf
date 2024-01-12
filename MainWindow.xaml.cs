@@ -19,6 +19,14 @@ namespace Quizyy_wpf
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		private string welcomeText1 = "Witaj w Quizyy\n" +
+			"Wybierz tryb gry z którym chciałbyś się zmierzyć\n";
+        private string introText1 = "Szybkie wprowadzenie:\n" +
+            "Quizyy to prosta gra edukacyjna w której zmierzysz się z quizami w różnej formie \n" +
+            "Fiszki to wyświetlane pojęcie i ukryta definicja\n" +
+            "Dopasowanie pojęć polega na połączeniu w pary pasujących do siebie opcji\n" +
+            "Podanie odpowiedzi polega na ręcznym wpisaniu odpowiedzi do zadanego pytania\n" +
+            "Wybór odpowiedzi polega na wybraniu jednej poprawnej odpowiedzi spośród podanych\n";
 		public MainWindow()
 		{
 			InitializeComponent();
@@ -36,7 +44,7 @@ namespace Quizyy_wpf
 				Orientation = Orientation.Horizontal,
 				HorizontalAlignment = HorizontalAlignment.Center,
 				VerticalAlignment = VerticalAlignment.Top,
-				Margin = new Thickness(0, 200, 0, 0)
+				Margin = new Thickness(0, 0, 0, 0)
 			};
 
 			for (int i = 0; i < buttonLabels.Length; i++)
@@ -71,6 +79,10 @@ namespace Quizyy_wpf
 				 buttonPanel.Children.Add(button);
 			}
 			MainGrid.Children.Add(buttonPanel);
+            welcomeText.Text = welcomeText1;
+            introText.Text = introText1;
+			welcomeText.Visibility = Visibility.Visible;
+			introText.Visibility = Visibility.Visible;
 		}
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
@@ -81,22 +93,30 @@ namespace Quizyy_wpf
         }
         private void FlashCards(object sender, RoutedEventArgs e)
         {
-            MainGrid.Children.Clear();
+			welcomeText.Visibility = Visibility.Collapsed;
+			introText.Visibility = Visibility.Collapsed;
+			MainGrid.Children.Clear();
             contentControl.Content = new FlashCardsView(this); 
         }
         private void Choose(object sender, RoutedEventArgs e)
         {
-            MainGrid.Children.Clear();
+			welcomeText.Visibility = Visibility.Collapsed;
+			introText.Visibility = Visibility.Collapsed;
+			MainGrid.Children.Clear();
             contentControl.Content = new ChooseView(this);
         }
         private void Fit(object sender, RoutedEventArgs e)
         {
-            MainGrid.Children.Clear();
+			welcomeText.Visibility = Visibility.Collapsed;
+			introText.Visibility = Visibility.Collapsed;
+			MainGrid.Children.Clear();
             contentControl.Content = new FitView(this);
         }
         private void Write(object sender, RoutedEventArgs e)
         {
-            MainGrid.Children.Clear();
+			welcomeText.Visibility = Visibility.Collapsed;
+			introText.Visibility = Visibility.Collapsed;
+			MainGrid.Children.Clear();
             contentControl.Content = new WriteView(this);
         }
         private void Window_KeyDown(object sender, KeyEventArgs e)

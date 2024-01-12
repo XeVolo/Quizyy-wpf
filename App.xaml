@@ -32,5 +32,11 @@
             <Setter Property="FontFamily" Value="Segoe UI"/>
             <Setter Property="Foreground" Value="Black"/>
         </Style>
+        <Style x:Key="CustomTextStyle2" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
     </Application.Resources>
 </Application>
