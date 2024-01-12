@@ -32,6 +32,7 @@ namespace Quizyy_wpf.View
         private TextBlock? DisplayTextBlock;
         private List<WriteModel> items = BaseController.GetWriteList();
         private int index = 0;
+        private ChooseController controller=new ChooseController();
 
         public ChooseView(MainWindow mainView)
         {
@@ -47,12 +48,12 @@ namespace Quizyy_wpf.View
         private void NewSet()
         {
             List<string> anslist = new List<string>();
-            index = GetRandom();
+            index = controller.GetRandom();
             anslist.Add(items[index].answer);
             anslist.Add(items[index].incorrectans1);
             anslist.Add(items[index].incorrectans2);
             anslist.Add(items[index].incorrectans3);
-            List<int> drawn = GetNumbers();
+            List<int> drawn = controller.GetNumbers();
             stackPanel1 = new StackPanel
             {
                 Orientation = Orientation.Vertical,
@@ -119,39 +120,13 @@ namespace Quizyy_wpf.View
             };
             MainGrid.Children.Add(DisplayTextBlock);
             DisplayQuestion();
-        }
-        private List<int> GetNumbers()
-        {
-            Range xy = new Range(0, 3);
-            int count = 4;
-            Random rnd = new Random();
-            List<int> numbers = new List<int>();
-
-            while (numbers.Count < count)
-            {
-                int liczba = rnd.Next(xy.Start.Value, xy.End.Value + 1);
-                if (!numbers.Contains(liczba))
-                {
-                    numbers.Add(liczba);
-                }
-            }
-
-            return numbers;
-        }
-        private int GetRandom()
-        {
-            List<WriteModel> list = BaseController.GetWriteList();
-            int size = list.Count;
-            Random rnd = new Random();
-            int result = rnd.Next(size);
-            return result;
-        }
+        }       
         private void AnsButtonClick(object sender, EventArgs e)
         {
             if (sender is Button clickedButton)
             {
                 string ans = clickedButton.Content.ToString();
-                bool correctness = ans.Equals(items[index].answer);
+                bool correctness = controller.AnsButtonClick(ans, index);
                 if (correctness)
                 {
 
@@ -168,7 +143,7 @@ namespace Quizyy_wpf.View
         }
         private void DisplayQuestion()
         {
-            DisplayTextBlock.Text = items[index].question;
+            DisplayTextBlock.Text = controller.DisplayQuestion(index);
         }
     }
 }

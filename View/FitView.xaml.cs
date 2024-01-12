@@ -36,6 +36,7 @@ namespace Quizyy_wpf.View
         private Button? chosen1;
         private Button? chosen2;
         private int resoult = 0;
+        private FitController controller=new FitController();
         public FitView(MainWindow mainView)
         {
             mainWindow1 = mainView;
@@ -47,38 +48,13 @@ namespace Quizyy_wpf.View
             mainWindow1.backButton.Visibility = Visibility.Visible;
             
             NewSet();
-        }
-        private int GetRandom()
-        {
-            List<FlashCardsModel> lista = BaseController.GetFlashCardsList();
-            int size = lista.Count - 7;
-            Random rnd = new Random();
-            int result = rnd.Next(size);
-            return result;
-        }
-        private List<int> GetNumbers(Range xy)
-        {
-            int count = 7;
-            Random rnd = new Random();
-            List<int> numbers = new List<int>();
-
-            while (numbers.Count < count)
-            {
-                int liczba = rnd.Next(xy.Start.Value, xy.End.Value + 1);
-                if (!numbers.Contains(liczba))
-                {
-                    numbers.Add(liczba);
-                }
-            }
-
-            return numbers;
-        }
+        }       
         private void NewSet()
         {
             List<FlashCardsModel> list = BaseController.GetFlashCardsList();
-            int first = GetRandom();
+            int first = controller.GetRandom();
             Range xy = new Range(first, first + 6);
-            List<int> drawn = GetNumbers(xy);
+            List<int> drawn = controller.GetNumbers(xy);
             stackPanel1 = new StackPanel
             {
                 Orientation = Orientation.Vertical,
@@ -109,7 +85,7 @@ namespace Quizyy_wpf.View
                 stackPanel1.Children.Add(leftButtons);
             }
             drawn.Clear();
-            drawn = GetNumbers(xy);
+            drawn = controller.GetNumbers(xy);
             foreach (int i in drawn)
             {
                 Button rightButtons = new Button

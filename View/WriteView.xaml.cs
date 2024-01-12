@@ -29,8 +29,7 @@ namespace Quizyy_wpf.View
         private Button? contextButton;
         private TextBlock? DisplayTextBlock;
         private TextBox? TextBox;
-        private List<WriteModel> items = BaseController.GetWriteList();
-        private int index = 0;
+        private WriteController controller=new WriteController();
         public WriteView(MainWindow mainView)
         {
             mainWindow1 = mainView;
@@ -113,53 +112,28 @@ namespace Quizyy_wpf.View
         }
         private void PreviousButtonClick(object sender, RoutedEventArgs e)
         {
-            if (index > 0)
-            {
-                index--;
+            controller.PreviousButtonClick();
                 DisplayQuestion();
-            }
-            else if (index == 0)
-            {
-                index = items.Count - 1;
-                DisplayQuestion();
-            }
+            
         }
 
         private void NextButtonClick(object sender, RoutedEventArgs e)
         {
-            if (index < items.Count - 1)
-            {
-                index++;
-                DisplayQuestion();
-            }
-            else if (index >= items.Count - 1)
-            {
-                index = 0;
-                DisplayQuestion();
-            }
+			controller.NextButtonClick();
+			DisplayQuestion();
+            
         }
         private void ContextButtonClick(object sender, RoutedEventArgs e)
         {
-            string ans = TextBox.Text.ToLower();
-            bool correctness = ans.Equals(items[index].answer.ToLower());
-            if (correctness)
-            {
-
-                MessageBox.Show("Odpowiedź prawidłowa");
-                index++;
-                if (index >= items.Count - 1) index = 0;
-                TextBox.Text = "";
-                DisplayQuestion();
-            }
-            else
-            {
-                TextBox.Text = "";
-                MessageBox.Show("Odpowiedź błędna");
-            }
+            string ans = controller.ContextButtonClick(TextBox.Text);
+            MessageBox.Show(ans);
+            TextBox.Text = "";
+            DisplayQuestion();
+           
         }
         private void DisplayQuestion()
         {
-            DisplayTextBlock.Text = items[index].question;
+            DisplayTextBlock.Text = controller.DisplayQuestion();
         }
     }
 }
