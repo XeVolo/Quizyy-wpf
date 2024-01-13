@@ -5,7 +5,7 @@ VisualStudioVersion = 17.5.33502.453
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Quizyy wpf", "Quizyy wpf.csproj", "{C16BC952-1335-4257-9D5B-023C291B549E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Quizyy", "..\Quizyy\Quizyy.csproj", "{232E1F70-D2A2-4A6A-8E07-B089B00698F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Quizyy", "..\Quizyy\Quizyy.csproj", "{A4AA66AF-B4C4-4615-8890-F875DBF1B25E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{C16BC952-1335-4257-9D5B-023C291B549E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C16BC952-1335-4257-9D5B-023C291B549E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C16BC952-1335-4257-9D5B-023C291B549E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{232E1F70-D2A2-4A6A-8E07-B089B00698F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{232E1F70-D2A2-4A6A-8E07-B089B00698F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{232E1F70-D2A2-4A6A-8E07-B089B00698F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{232E1F70-D2A2-4A6A-8E07-B089B00698F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4AA66AF-B4C4-4615-8890-F875DBF1B25E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4AA66AF-B4C4-4615-8890-F875DBF1B25E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4AA66AF-B4C4-4615-8890-F875DBF1B25E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4AA66AF-B4C4-4615-8890-F875DBF1B25E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
