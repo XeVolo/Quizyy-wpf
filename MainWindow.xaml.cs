@@ -1,4 +1,5 @@
-﻿using Quizyy_wpf.Controller;
+﻿using Quizyy.Controller;
+using Quizyy_wpf.Controller;
 using Quizyy_wpf.View;
 using System.Reflection;
 using System.Text;
@@ -29,6 +30,7 @@ namespace Quizyy_wpf
             "Wybór odpowiedzi polega na wybraniu jednej poprawnej odpowiedzi spośród podanych\n";
 		public MainWindow()
 		{
+            Program.CloseConsole();
 			InitializeComponent();
 			GenerateButtons();
 		}
@@ -43,7 +45,7 @@ namespace Quizyy_wpf
 			{
 				Orientation = Orientation.Horizontal,
 				HorizontalAlignment = HorizontalAlignment.Center,
-				VerticalAlignment = VerticalAlignment.Top,
+				VerticalAlignment = VerticalAlignment.Center,
 				Margin = new Thickness(0, 0, 0, 0)
 			};
 
@@ -78,11 +80,33 @@ namespace Quizyy_wpf
 
 				 buttonPanel.Children.Add(button);
 			}
+			Button cons = new Button
+			{
+				Content = "Konsola",
+				Margin = new Thickness(700,500,0,0),
+				Width = 180,
+				Height = 30,
+				Style = (Style)FindResource("CustomButtonStyle"),
+
+			};
+			cons.Click += ConsoleOpen;
+
 			MainGrid.Children.Add(buttonPanel);
-            welcomeText.Text = welcomeText1;
+			MainGrid.Children.Add(cons);
+			welcomeText.Text = welcomeText1;
             introText.Text = introText1;
 			welcomeText.Visibility = Visibility.Visible;
 			introText.Visibility = Visibility.Visible;
+		}
+        private void ConsoleOpen(object sender, RoutedEventArgs e)
+        {          
+            Application.Current.MainWindow.Hide();
+			Program.OpenConsole();
+			MainController builder = new MainController();
+			Program.CloseConsole();
+			Application.Current.MainWindow.Show();
+			GenerateButtons();
+
 		}
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
