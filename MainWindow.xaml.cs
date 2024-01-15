@@ -99,13 +99,19 @@ namespace Quizyy_wpf
 			introText.Visibility = Visibility.Visible;
 		}
         private void ConsoleOpen(object sender, RoutedEventArgs e)
-        {          
-            Application.Current.MainWindow.Hide();
-			Program.OpenConsole();
-			MainController builder = new MainController();
-			Program.CloseConsole();
-			Application.Current.MainWindow.Show();
-			GenerateButtons();
+        {
+            try
+            {
+                Application.Current.MainWindow.Hide();
+                Program.OpenConsole();
+                MainController builder = new MainController();
+                Program.CloseConsole();
+                Application.Current.MainWindow.Show();
+                GenerateButtons();
+            }catch (Exception ex)
+            {
+
+            }
 
 		}
         private void BackButton_Click(object sender, RoutedEventArgs e)
